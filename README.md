@@ -43,8 +43,7 @@ A **Telegram bot** built for the [**Bots.Business**](https://bots.business/) pla
 
 ## 🤝 Credits
 
-This project was fully developed by **FlashCom**, with the extensive assistance of **AI tools** throughout the entire process.  
-FlashCom is the **main creator and maintainer**, while AI was used as a supportive resource for writing code
+This project is a human-AI collaboration. I, FlashCom, am the sole creator and maintainer, providing the vision, problem-solving, and final integration. AI tools were utilized to accelerate the code development process.
 
 ---
 
