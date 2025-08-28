@@ -64,6 +64,15 @@ When a file link is scanned, the bot replies with a VirusTotal report summary:
 
 ---
 
+## Definition of above reports
+🟥 Malicious: 9 → 9 antivirus engines flagged the file as malicious (e.g., virus, trojan, ransomware).
+
+🟧 Suspicious: 1 → 1 engine thought the file looks suspicious (but not confirmed as malware).
+
+🟩 Harmless: 62 → 62 engines scanned the file and found it completely safe.
+
+⚪ Undetected: 25 → 25 engines could not identify the file (they didn’t detect anything, but that doesn’t mean it’s safe).
+
 ## 🚀 Features
 
 - **🔗 Supports scanning direct file URLs** (`.zip`, `.rar`, `.7z`, `.txt`, etc.).
