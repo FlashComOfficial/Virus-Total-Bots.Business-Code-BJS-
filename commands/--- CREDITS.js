@@ -18,14 +18,7 @@ CMD*/
 
 📢 Credits Notice  
 
-This bot and its code were created and developed by FlashCom,  
-with the assistance of AI (For Time Saving )  
-
-All logic, VirusTotal integration, and functionality have been tailored  
-specifically for use on the **Bots.Business** platform.  
-
-🤖 Powered by FlashCom  
-✨ Made with ❤️ by AI
+This project is a human-AI collaboration. I, FlashCom, am the sole creator and maintainer, providing the vision, problem-solving, and final integration. AI tools were utilized to accelerate the code development process.
 
 Any bugs report to : https://t.me/flashcomassistant
 
