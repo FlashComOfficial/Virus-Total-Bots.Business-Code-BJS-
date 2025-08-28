@@ -1,4 +1,4 @@
-# 🦠 VirusTotal File Scanner Bot (Bots.Business)
+# 🦠 VirusTotal File Scanner Bot (Bots.Business) - BETA VERSION
 
 A **Telegram bot** built for the [**Bots.Business**](https://bots.business/) platform that allows users to submit direct file links (`.zip`, `.rar`, `.7z`, `.txt`, etc.) for scanning with **VirusTotal**. The bot fetches results and provides a **clear antivirus report directly in chat**.
 
