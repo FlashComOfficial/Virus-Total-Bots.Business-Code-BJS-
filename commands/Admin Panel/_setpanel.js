@@ -31,7 +31,6 @@ var panel = {
   index: 0,
   icon: "key",
   button_title: "SAVE",
-
   fields: [
     {
       name: "vt_api_key",
@@ -48,13 +47,14 @@ var panel = {
       placeholder: "123456789"
     }
   ]
-}
+};
 
 AdminPanel.setPanel({
   panel_name: "virustotal_settings",
   data: panel,
-  force: true   
-})
+  force: true
+});
 
-Bot.sendMessage("✅ VirusTotal Admin Panel created/updated. Go to the *Admin panel* tab to configure.");
+Bot.sendMessage("✅ VirusTotal Admin Panel created/updated and values synced.\nGo to the *Admin panel* tab to update anytime.");
+
 

@@ -16,13 +16,15 @@
   group: 
 CMD*/
 
-/*CMD
-  command: onUrlSubmit
-  help:
-  need_reply: false
-  auto_retry_time:
-  folder:
-CMD*/
+/* 
+  🦠 VirusTotal Scanner Bot
+  Read credits and for more codes/bots anf for viewing & testing apis visit:
+  👉 https://getmart.iblogger.org
+  
+  
+  For this code updates further join our channel
+  https://t.me/FlashComBJS
+*/
 
 let data = JSON.parse(content);
 if (data && data.data && data.data.id) {
