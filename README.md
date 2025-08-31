@@ -176,7 +176,7 @@ AI tools helped accelerate code assembly and documentation.
 Here are some example screenshots of the bot in action:
 
 <p align="center">
-  <img src="sampleimg/sample1.png" alt="Sample 1" width="100"><br>
+  <img src="sampleimg/sample1.png" alt="Sample 1" width="400"><br>
   <img src="sampleimg/sample2.png" alt="Sample 2" width="100"><br>
   <img src="sampleimg/sample3.png" alt="Sample 3" width="100"><br>
   <img src="sampleimg/sample4.png" alt="Sample 4" width="100"><br>
