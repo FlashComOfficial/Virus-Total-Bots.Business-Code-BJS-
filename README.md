@@ -6,6 +6,8 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 ---
 
+ <img src="sampleimg/welcome.png" alt="Sample 1" width="400"><br>
+
 ## 🚀 What’s New in v1.1
 
 - 🌐 **URL** scan (supports direct file links too: `.zip`, `.rar`, `.7z`, `.txt`)  
