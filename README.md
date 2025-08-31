@@ -34,6 +34,13 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 ---
 
+## How to import GitHub repo bots.business bots to Bots.Business account
+
+Watch this step-by-step video guide on YouTube:  
+👉 [How to import GitHub repo to Bots.Business](https://www.youtube.com/watch?v=irYn0_UvAcY)
+
+---
+
 ## 🔑 Setting Your API Key (Step-by-Step)
 
 You can set using bots.business admin panel:
