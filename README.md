@@ -8,21 +8,35 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 ## 🚀 What’s New in v1.1
 
-- 🌐 **URL** scan
-- 🏷 **Domain** scan
-- 🔢 **IP address** scan
-- 📄 **File hash** scan (MD5/SHA1/SHA256)
-- 🧭 **Inline menu that edits in place** (Back button, no message spam)
-- 🧱 Better validation & helpful status messages
-- ⚠️ Shared error handling & rate-limit guidance
+- 🌐 **URL** scan (supports direct file links too: `.zip`, `.rar`, `.7z`, `.txt`)  
+- 🏷 **Domain** scan (check reputation of any domain)  
+- 🔢 **IP address** scan (scan IPv4/IPv6 addresses)  
+- 📄 **File hash** scan (MD5/SHA1/SHA256 lookup in VirusTotal database)  
+- 🧭 **Inline menu that edits in place** (Back button, no message spam)  
+- 🧱 Better validation & helpful status messages  
+- ⚠️ Shared error handling & rate-limit guidance  
 
 ---
 
+## 📸 Screenshots
+
+Here are some example screenshots of the bot in action:
+
+<p align="center">
+  <img src="sample1.png" alt="Sample 1" width="600"><br>
+  <img src="sample2.png" alt="Sample 2" width="600"><br>
+  <img src="sample3.png" alt="Sample 3" width="600"><br>
+  <img src="sample4.png" alt="Sample 4" width="600"><br>
+  <img src="sample5.png" alt="Sample 5" width="600">
+</p>
+
+
 ## ⚠️ Important Notes
 
-- Bots.Business **does not support raw file uploads**; use **direct file links** or **file hashes** instead.
-- VirusTotal **free API** has strict rate limits (e.g., ~4 req/min). Hitting the limit will delay results.
-- VirusTotal results are **indicative**, not guarantees. Always exercise caution.
+- Bots.Business **does not support raw file uploads** → use **direct file links** or **file hashes** instead.  
+- VirusTotal **free API** has strict rate limits (about **4 requests/minute**). If you exceed this, results will be delayed.  
+- VirusTotal results are **indicative only**. They show how antivirus engines flag an item, but they are **not 100% accurate**.  
+- FlashCom is **not responsible for any issues** because we **do not guarantee results, safety, or accuracy**. Always double-check with other tools before trusting results.  
 
 ---
 
@@ -30,11 +44,11 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 1. Go to 👉 **VirusTotal**: https://www.virustotal.com  
 2. Sign in (or create a free account).  
-3. Open your **API Key** page and copy your key.
+3. Open your **API Key** page and copy your key.  
 
 ---
 
-## How to import GitHub repo Bots.Business bots to Bots.Business account
+## 📥 How to Import GitHub Repo Bots.Business Bots into Your Bots.Business Account
 
 Watch this step-by-step video guide on YouTube:  
 👉 [How to import GitHub repo to Bots.Business](https://www.youtube.com/watch?v=irYn0_UvAcY)
@@ -43,130 +57,90 @@ Watch this step-by-step video guide on YouTube:
 
 ## 🔑 Setting Your API Key (Step-by-Step)
 
-You can set using bots.business admin panel:
+You can set it using the Bots.Business **Admin Panel**:
 
-### Set using Admin Panel Bots.Business
-1. Run /setpanel in your bot
-2.Then go to your bot in **Bots.Business** → **Your Bot** → **Admin Panel**.
-3. Paste your API key in the api key field.
-4. Set your admin panel id means your telegram id
-5. 
+1. Run `/setpanel` in your bot.  
+2. Go to your bot in **Bots.Business** → **Your Bot** → **Admin Panel**.  
+3. Paste your **VirusTotal API key** in the API Key field.  
+4. Set your **admin panel ID** (your Telegram user ID).  
+
 > Using a property keeps your key in one place and avoids editing multiple commands later.
 
 ---
 
-## 🧭 How to Use
+## 🧭 How to Use the Bot
 
 1. **Start the bot** with `/start`.  
-   You’ll see a single inline menu with:
-   - 🌐 **Scan URL**
-   - 🏷 **Scan Domain**
-   - 🔢 **Scan IP**
-   - 📄 **Scan Hash**
-   - ℹ️ **About**
+   You’ll see a simple inline menu with:
+   - 🌐 **Scan URL**  
+   - 🏷 **Scan Domain**  
+   - 🔢 **Scan IP**  
+   - 📄 **Scan Hash**  
+   - ℹ️ **About**  
 
 2. **Pick what to scan**  
-   The message updates in place (no spam) and prompts you to send the value.
+   The bot updates the same message (no spam) and prompts you to send a value.
 
 3. **Submit & check**  
-   - For **URL**: the bot submits it to VirusTotal, then you tap **“Check URL Report”** to fetch the analysis when ready.  
-   - For **Domain / IP / Hash**: the bot fetches reputation/analysis data instantly if available.
+   - **URL**: The bot submits the URL to VirusTotal. When the analysis is ready, you tap **“Check URL Report”** to see the result.  
+   - **Domain / IP / Hash**: The bot fetches existing VirusTotal data instantly if available.  
 
 4. **Read the report**  
-   You’ll get a compact summary:
+   You’ll get a compact summary like:
+   
 ✅ VirusTotal Report
 
-🟥 Malicious: 9 
+🟥 Malicious: 9
 🟧 Suspicious: 1
 🟩 Harmless: 62
 ⚪ Undetected: 25
+
 
 ---
 
 ## 📦 Supported Scans & What They Mean
 
 ### 🌐 URL Scan
-- Submits a URL (or direct file link like `.zip`, `.rar`, `.7z`, `.txt`) to VirusTotal for analysis.
-- If the scan is still **queued/in-progress**, try checking again shortly.
-- Report shows detection summary from multiple antivirus engines.
+- Submits a URL (or direct file link) to VirusTotal.  
+- Results may take time if the scan is **queued or in progress**.  
+- Report shows detections from multiple antivirus engines.  
+- Useful for checking suspicious links, phishing sites, or hosted files.  
 
 ### 🏷 Domain Scan
-- Checks a domain in VirusTotal.
-- Shows detection summary (malicious, suspicious, harmless, undetected).
-- *Note:* Extra info like registrar/WHOIS is not included in this bot’s version.
+- Checks domain reputation in VirusTotal.  
+- Results show detection counts: malicious, suspicious, harmless, undetected.  
+- Great for verifying websites before visiting.  
+- ⚠️ Does **not include WHOIS, registrar, or DNS details** in this version.  
 
 ### 🔢 IP Scan
-- Checks an IP address in VirusTotal.
-- Shows detection summary (malicious, suspicious, harmless, undetected).
-- *Note:* Network owner (ASN) or geolocation data is not included in this bot’s version.
+- Checks reputation of an IP address.  
+- Results show detection counts (malicious, suspicious, harmless, undetected).  
+- Useful for checking suspicious servers or networks.  
+- ⚠️ Does **not include ASN (network owner) or geolocation data**.  
 
 ### 📄 File Hash Scan (MD5/SHA1/SHA256)
-- Looks up a file’s known status by its hash (without uploading).
-- Fastest way to check already-known samples in VirusTotal.
-- Report only includes detection summary stats.
+- Fast lookup of already-known files in VirusTotal.  
+- No need to upload → just provide the hash.  
+- Best for checking whether a file has been flagged before.  
+- ⚠️ If no result is found, it doesn’t mean the file is safe, only that it’s not in VirusTotal’s database.  
 
 ---
 
-## 📝 Example: URL Report (Explained)
+## 📝 Example: Report Explained
 
-- **🟥 Malicious** — engines flagged it as dangerous (virus/trojan/ransomware).
-- **🟧 Suspicious** — looks risky but not confirmed.
-- **🟩 Harmless** — known good/clean.
-- **⚪ Undetected** — no flags; not necessarily safe, just unknown.
+- **🟥 Malicious** → flagged as dangerous (virus/trojan/ransomware).  
+- **🟧 Suspicious** → may be risky but not confirmed.  
+- **🟩 Harmless** → known safe.  
+- **⚪ Undetected** → unknown to antivirus engines (not automatically safe).  
 
 ---
 
 ## ✨ Features
 
-- **All-in-one scanner**: URL, Domain, IP, File Hash
-- **Inline UI** (edits the same message, Back button)
-- **Real-time VirusTotal reports**
-- **Friendly error messages** (rate limits, missing key, etc.)
-- **Extensible**: add more URL extensions (e.g., `.pdf`, `.apk`, `.exe`) in the URL validation
+- ✅ All-in-one scanner: URL, Domain, IP, File Hash  
+- ✅ Inline UI 
+- ✅ Real-time VirusTotal reports  
+- ✅ Friendly error handling (rate limits, missing key, invalid input)  
+- ✅ Clean formatting with emoji indicators  
 
 ---
-
-## 🔧 Configuration Tips
-
-- **Add more URL extensions**: in the URL validation, append more checks like  
-`|| lower.endsWith(".pdf") || lower.endsWith(".apk") || lower.endsWith(".exe")`
-- **Respect rate limits**: avoid spamming requests; wait before re-checking analysis.
-
----
-
-## 📄 Release Notes – v1.1
-
-- Added **Domain**, **IP**, and **File Hash** scanners
-- Upgraded **inline UI** to edit messages in place
-- Cleaner **report formatting** across all scan types
-- Improved **input validation** and **error handling**
-- Documentation revamped for quick setup
-
----
-
-## 📚 License & Usage
-
-- You may **edit**, **publish**, or **modify** this code.
-- You must retain credits to **FlashCom** in forks, distributions, or publications.
-- Use responsibly. The authors are **not responsible** for misuse or damages.
-- This project is provided **as-is** (BETA → now Full Scan Release features).
-
----
-
-## 🤝 Credits
-
-This project is a **human + AI collaboration**.  
-Vision, integration, and maintenance by **FlashCom**.  
-AI tools helped accelerate code assembly and documentation.
-
-**Powered by FlashCom.**  
-
----
-
-## 🔗 Links
-
-- Bots.Business: https://bots.business  
-- VirusTotal: https://virustotal.com  
-- GetMart (more bots & codes including view and test apis ): https://getmart.iblogger.org
-- GetMart Official Channel : https://t.me/GetMartOfficialChannel
-- FlashCom BJS Codes : https://t.me/FlashComBjs ( Get updates regardiign this code or even get more codes and news )
