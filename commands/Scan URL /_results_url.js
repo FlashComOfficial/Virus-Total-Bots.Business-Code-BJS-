@@ -25,24 +25,16 @@ CMD*/
   For this code updates further join our channel
   https://t.me/FlashComBJS
 */
+let url = message;
 
-let text = message;
-if (!text) {
-  Bot.sendMessage("❌ Invalid input. Send me the url again ?.");
-  Bot.runCommand("/results_url");
+// Validate
+if (!url || !url.match(/^https?:\/\//i)) {
+  Bot.sendMessage("⚠️ Please send a valid URL starting with http:// or https://");
   return;
 }
 
 
-let lower = text.toLowerCase();
-
-if (!(lower.endsWith(".zip") || lower.endsWith(".txt") || lower.endsWith(".rar") || lower.endsWith(".7z"))) {
-  Bot.sendMessage("⚠️ Only direct file links ending with `.zip`, `.txt`, `.rar`, or `.7z` are allowed.\n\nPlease send a valid file URL.");
-  Bot.runCommand("/results_url");
-  return;
-}
-
-Bot.setProperty("lastURL:" + user.telegramid, text, "string");
+Bot.setProperty("lastUrl:" + user.telegramid, url, "string");
 
 var values = AdminPanel.getPanelValues("virustotal_settings");
 let apiKey = values.vt_api_key;
@@ -52,11 +44,24 @@ if (!apiKey) {
   return;
 }
 
+let msg = Api.sendMessage({
+  chat_id: chat.chatid,
+  text: "⏳ Submitting URL to VirusTotal... please wait a few seconds."
+});
+
+
 HTTP.post({
   url: "https://www.virustotal.com/api/v3/urls",
-  headers: { "x-apikey": apiKey, "Content-Type": "application/x-www-form-urlencoded" },
-  body: "url=" + encodeURIComponent(text),
+  headers: { 
+    "x-apikey": apiKey,
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: "url=" + encodeURIComponent(url),
   success: "onUrlSubmit",
   error: "onError"
 });
+
+if (msg) {
+  Bot.setProperty("waitingMsg:" + user.telegramid, msg.message_id);
+}
 

@@ -25,16 +25,30 @@ CMD*/
   For this code updates further join our channel
   https://t.me/FlashComBJS
 */
+let data;
+try {
+  data = JSON.parse(content);
+} catch(e) {
+  Bot.sendMessage("⚠️ Failed to parse submission:\n" + content);
+  return;
+}
 
-let data = JSON.parse(content);
 if (data && data.data && data.data.id) {
-  Bot.setProperty("lastUrlScan:" + user.telegramid, data.data.id, "string");
+  let analysisId = data.data.id;
 
-  Api.sendMessage({
-    text: "🔍 URL submitted. Tap below to check results:",
-    reply_markup: { inline_keyboard: [[{ text: "📊 Check URL Report", callback_data: "/check_url" }]] }
+  // Save analysis id
+  Bot.setProperty("lastAnalysis:" + user.telegramid, analysisId, "string");
+
+  var values = AdminPanel.getPanelValues("virustotal_settings");
+  let apiKey = values.vt_api_key;
+
+  HTTP.get({
+    url: "https://www.virustotal.com/api/v3/analyses/" + analysisId,
+    headers: { "x-apikey": apiKey },
+    success: "onUrlResult",
+    error: "onError"
   });
 } else {
-  Bot.sendMessage("⚠️ URL submission failed.");
+  Bot.sendMessage("⚠️ Submission failed:\n" + content);
 }
 
