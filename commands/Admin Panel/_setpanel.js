@@ -34,7 +34,7 @@ var panel = {
 
   fields: [
     {
-      name: "VT_API_KEY",
+      name: "vt_api_key",
       title: "VirusTotal API Key",
       description: "Paste your VirusTotal API key here (kept hidden).",
       type: "password",
