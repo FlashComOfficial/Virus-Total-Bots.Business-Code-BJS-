@@ -6,7 +6,7 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 ---
 
- <img src="sampleimg/welcome.png" alt="Sample 1" width="400"><br>
+ <img src="sampleimg/welcome.png" alt="Sample 1" width="700"><br>
 
 ## 🚀 What’s New in v1.1
 
