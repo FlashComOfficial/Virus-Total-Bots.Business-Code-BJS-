@@ -31,7 +31,7 @@ if (status != "completed") {
   return
 }
 
-// ---- Show results ----
+// Results below ( do not chnage unless you know what your doing )
 let stats = data.data.attributes.stats || {}
 let malicious = stats.malicious || 0
 let suspicious = stats.suspicious || 0
