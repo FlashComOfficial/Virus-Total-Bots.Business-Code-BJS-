@@ -18,18 +18,6 @@ This release upgrades the original URL-only beta to a **complete security scanne
 
 ---
 
-## 📸 Screenshots
-
-Here are some example screenshots of the bot in action:
-
-<p align="center">
-  <img src="sampleimg/sample1.png" alt="Sample 1" width="600"><br>
-  <img src="sampleimg/sample2.png" alt="Sample 2" width="600"><br>
-  <img src="sampleimg/sample3.png" alt="Sample 3" width="600"><br>
-  <img src="sampleimg/sample4.png" alt="Sample 4" width="600"><br>
-  <img src="sampleimg/sample5.png" alt="Sample 5" width="600">
-</p>
-
 
 ## ⚠️ Important Notes
 
@@ -144,3 +132,53 @@ You can set it using the Bots.Business **Admin Panel**:
 - ✅ Clean formatting with emoji indicators  
 
 ---
+
+## 📄 Release Notes – v1.1
+
+- Added **Domain**, **IP**, and **File Hash** scanners
+- Upgraded **inline UI** to edit messages in place
+- Cleaner **report formatting** across all scan types
+- Improved **input validation** and **error handling**
+- Documentation revamped for quick setup
+
+---
+
+## 📚 License & Usage
+
+- You may **edit**, **publish**, or **modify** this code.
+- You must retain credits to **FlashCom** in forks, distributions, or publications.
+- Use responsibly. The authors are **not responsible** for misuse or damages.
+- This project is provided **as-is** (BETA → now Full Scan Release features).
+
+---
+
+## 🤝 Credits
+
+This project is a **human + AI collaboration**.  
+Vision, integration, and maintenance by **FlashCom**.  
+AI tools helped accelerate code assembly and documentation.
+
+**Powered by FlashCom.**  
+
+---
+
+## 🔗 Links
+
+- Bots.Business: https://bots.business  
+- VirusTotal: https://virustotal.com  
+- GetMart (more bots & codes including view and test apis ): https://getmart.iblogger.org
+- GetMart Official Channel : https://t.me/GetMartOfficialChannel
+- FlashCom BJS Codes : https://t.me/FlashComBjs ( Get updates regarding this code or even get more codes and news )
+
+
+## 📸 Screenshots
+
+Here are some example screenshots of the bot in action:
+
+<p align="center">
+  <img src="sampleimg/sample1.png" alt="Sample 1" width="100"><br>
+  <img src="sampleimg/sample2.png" alt="Sample 2" width="100"><br>
+  <img src="sampleimg/sample3.png" alt="Sample 3" width="100"><br>
+  <img src="sampleimg/sample4.png" alt="Sample 4" width="100"><br>
+  <img src="sampleimg/sample5.png" alt="Sample 5" width="100">
+</p>
