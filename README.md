@@ -23,11 +23,11 @@ This release upgrades the original URL-only beta to a **complete security scanne
 Here are some example screenshots of the bot in action:
 
 <p align="center">
-  <img src="justimg/sample1.png" alt="Sample 1" width="600"><br>
-  <img src="justimg/sample2.png" alt="Sample 2" width="600"><br>
-  <img src="justimg/sample3.png" alt="Sample 3" width="600"><br>
-  <img src="justimg/sample4.png" alt="Sample 4" width="600"><br>
-  <img src="justimg/sample5.png" alt="Sample 5" width="600">
+  <img src="sampleimg/sample1.png" alt="Sample 1" width="600"><br>
+  <img src="sampleimg/sample2.png" alt="Sample 2" width="600"><br>
+  <img src="sampleimg/sample3.png" alt="Sample 3" width="600"><br>
+  <img src="sampleimg/sample4.png" alt="Sample 4" width="600"><br>
+  <img src="sampleimg/sample5.png" alt="Sample 5" width="600">
 </p>
 
 
