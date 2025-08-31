@@ -1,81 +1,165 @@
-# 🦠 VirusTotal File Scanner Bot (Bots.Business) - BETA VERSION
+# 🦠 VirusTotal File Scanner Bot (Bots.Business) — v1.1 Full Release
 
-A **Telegram bot** built for the [**Bots.Business**](https://bots.business/) platform that allows users to submit direct file links (`.zip`, `.rar`, `.7z`, `.txt`, etc.) for scanning with **VirusTotal**. The bot fetches results and provides a **clear antivirus report directly in chat**.
+A **Telegram bot** built on the [Bots.Business](https://bots.business/) platform that lets users check **URLs, Domains, IPs, and File Hashes** using **VirusTotal** and receive clear, readable reports right in chat.
 
----
-
-## ⚠️ Important Notice
-
-- You can send **direct file links** (e.g., `.zip`, `.rar`, `.7z`, `.txt`) to check them on VirusTotal.
-- By default, only these extensions are supported, but you can easily **add more** in the code.
-
-🔔 **Disclaimers**
-- Results are powered by **VirusTotal’s scanning engines** — we do **not guarantee 100% accuracy**.
-- The developers are **not responsible** for how results are used.
-- This project is currently in **BETA version**. Use at your own risk.
+This release upgrades the original URL-only beta to a **complete security scanner** with a **clean inline UI** (edits messages in place — no chat spam).
 
 ---
 
-## 🛠 Getting Your VirusTotal API Key
+## 🚀 What’s New in v1.1
 
-1. Go to 👉 [VirusTotal API Keys](https://www.virustotal.com/gui/user/flashcomteam/apikey)
-2. Login (or create a free VirusTotal account).
-3. Generate your **personal API key**.
-
----
-
-## 🔑 Setting Your API Key
-
-1. Open the commands **`/onUrl`** and **`/checkResult`** in your Bots.Business bot.
-2. Replace the `YOUR_API_KEY_HERE` with your API key.
+- 🌐 **URL** scan
+- 🏷 **Domain** scan
+- 🔢 **IP address** scan
+- 📄 **File hash** scan (MD5/SHA1/SHA256)
+- 🧭 **Inline menu that edits in place** (Back button, no message spam)
+- 🧱 Better validation & helpful status messages
+- ⚠️ Shared error handling & rate-limit guidance
 
 ---
 
-## 📝 How to Use
+## ⚠️ Important Notes
 
-1.  **Send the File URL:** First, send the direct URL of the file you want to scan to the bot.
-2.  **Wait for the Scan:** VirusTotal will begin processing your file. This can take some time, depending on the file's size and how busy the scanning queue is. **You must wait for the scan to finish before proceeding.**
-3.  **Get the Report:** Once you've waited, simply use the command `/checkResult` to retrieve the report.
+- Bots.Business **does not support raw file uploads**; use **direct file links** or **file hashes** instead.
+- VirusTotal **free API** has strict rate limits (e.g., ~4 req/min). Hitting the limit will delay results.
+- VirusTotal results are **indicative**, not guarantees. Always exercise caution.
 
-**Important:** The bot will only show the results for the **last URL you submitted**. You must run `/checkResult` to get the report; you will not receive an automatic message. If the scan is still in progress, you will need to wait and try the command again later.
+---
+
+## 🛠 Getting a VirusTotal API Key
+
+1. Go to 👉 **VirusTotal**: https://www.virustotal.com  
+2. Sign in (or create a free account).  
+3. Open your **API Key** page and copy your key.
+
+---
+
+## 🔑 Setting Your API Key (Step-by-Step)
+
+You can set using bots.business admin panel:
+
+### Set using Admin Panel Bots.Business
+1. Run /setpanel in your bot
+2.Then go to your bot in **Bots.Business** → **Your Bot** → **Admin Panel**.
+3. Paste your API key in the api key field.
+4. Set your admin panel id means your telegram id
+5. 
+> Using a property keeps your key in one place and avoids editing multiple commands later.
+
+---
+
+## 🧭 How to Use
+
+1. **Start the bot** with `/start`.  
+   You’ll see a single inline menu with:
+   - 🌐 **Scan URL**
+   - 🏷 **Scan Domain**
+   - 🔢 **Scan IP**
+   - 📄 **Scan Hash**
+   - ℹ️ **About**
+
+2. **Pick what to scan**  
+   The message updates in place (no spam) and prompts you to send the value.
+
+3. **Submit & check**  
+   - For **URL**: the bot submits it to VirusTotal, then you tap **“Check URL Report”** to fetch the analysis when ready.  
+   - For **Domain / IP / Hash**: the bot fetches reputation/analysis data instantly if available.
+
+4. **Read the report**  
+   You’ll get a compact summary:
+✅ VirusTotal Report
+
+🟥 Malicious: 9 
+🟧 Suspicious: 1
+🟩 Harmless: 62
+⚪ Undetected: 25
+
+---
+
+## 📦 Supported Scans & What They Mean
+
+### 🌐 URL Scan
+- Submits a URL (or direct file link like `.zip`, `.rar`, `.7z`, `.txt`) to VirusTotal for analysis.
+- If the scan is still **queued/in-progress**, try checking again shortly.
+- Report shows detection summary from multiple antivirus engines.
+
+### 🏷 Domain Scan
+- Checks a domain in VirusTotal.
+- Shows detection summary (malicious, suspicious, harmless, undetected).
+- *Note:* Extra info like registrar/WHOIS is not included in this bot’s version.
+
+### 🔢 IP Scan
+- Checks an IP address in VirusTotal.
+- Shows detection summary (malicious, suspicious, harmless, undetected).
+- *Note:* Network owner (ASN) or geolocation data is not included in this bot’s version.
+
+### 📄 File Hash Scan (MD5/SHA1/SHA256)
+- Looks up a file’s known status by its hash (without uploading).
+- Fastest way to check already-known samples in VirusTotal.
+- Report only includes detection summary stats.
+
+---
+
+## 📝 Example: URL Report (Explained)
+
+- **🟥 Malicious** — engines flagged it as dangerous (virus/trojan/ransomware).
+- **🟧 Suspicious** — looks risky but not confirmed.
+- **🟩 Harmless** — known good/clean.
+- **⚪ Undetected** — no flags; not necessarily safe, just unknown.
+
+---
+
+## ✨ Features
+
+- **All-in-one scanner**: URL, Domain, IP, File Hash
+- **Inline UI** (edits the same message, Back button)
+- **Real-time VirusTotal reports**
+- **Friendly error messages** (rate limits, missing key, etc.)
+- **Extensible**: add more URL extensions (e.g., `.pdf`, `.apk`, `.exe`) in the URL validation
+
+---
+
+## 🔧 Configuration Tips
+
+- **Add more URL extensions**: in the URL validation, append more checks like  
+`|| lower.endsWith(".pdf") || lower.endsWith(".apk") || lower.endsWith(".exe")`
+- **Respect rate limits**: avoid spamming requests; wait before re-checking analysis.
+
+---
+
+## 📄 Release Notes – v1.1
+
+- Added **Domain**, **IP**, and **File Hash** scanners
+- Upgraded **inline UI** to edit messages in place
+- Cleaner **report formatting** across all scan types
+- Improved **input validation** and **error handling**
+- Documentation revamped for quick setup
+
+---
+
+## 📚 License & Usage
+
+- You may **edit**, **publish**, or **modify** this code.
+- You must retain credits to **FlashCom** in forks, distributions, or publications.
+- Use responsibly. The authors are **not responsible** for misuse or damages.
+- This project is provided **as-is** (BETA → now Full Scan Release features).
 
 ---
 
 ## 🤝 Credits
 
-This project is a human-AI collaboration. I, FlashCom, am the sole creator and maintainer, providing the vision, problem-solving, and final integration. AI tools were utilized to accelerate the code development process.
+This project is a **human + AI collaboration**.  
+Vision, integration, and maintenance by **FlashCom**.  
+AI tools helped accelerate code assembly and documentation.
+
+**Powered by FlashCom.**  
 
 ---
 
-## 📌 Usage Rights & Responsibilities
+## 🔗 Links
 
-- You are free to edit, publish, or modify this code.
-- Once obtained, it is your responsibility to manage, publish, or distribute.
-- Credits to FlashCom are required in all publications, forks, or modifications.
-- Contributions, improvements, and pull requests are always welcome!
-
----
-
-## 📊 Example Report
-
-When a file link is scanned, the bot replies with a VirusTotal report summary:
-
-`✅ VirusTotal Report for last URL: 🟥 Malicious: 9  🟧 Suspicious: 1  🟩 Harmless: 62  ⚪ Undetected: 25`
-
----
-
-## Definition of above reports
-🟥 Malicious: 9 → 9 antivirus engines flagged the file as malicious (e.g., virus, trojan, ransomware).
-
-🟧 Suspicious: 1 → 1 engine thought the file looks suspicious (but not confirmed as malware).
-
-🟩 Harmless: 62 → 62 engines scanned the file and found it completely safe.
-
-⚪ Undetected: 25 → 25 engines could not identify the file (they didn’t detect anything, but that doesn’t mean it’s safe).
-
-## 🚀 Features
-
-- **🔗 Supports scanning direct file URLs** (`.zip`, `.rar`, `.7z`, `.txt`, etc.).
-- **⚡ Fetches real-time VirusTotal reports.**
-- **📊 Provides a clean and clear report format.**
-- **🛠 Easy to customize and extend** (add more file extensions in /onUrl you can add "|| lower.endsWith(".7z")" aftr this add repalce .7z with your extension and you can add more likewhise )
+- Bots.Business: https://bots.business  
+- VirusTotal: https://virustotal.com  
+- GetMart (more bots & codes including view and test apis ): https://getmart.iblogger.org
+- GetMart Official Channel : https://t.me/GetMartOfficialChannel
+- FlashCom BJS Codes : https://t.me/FlashComBjs ( Get updates regardiign this code or even get more codes and news )
