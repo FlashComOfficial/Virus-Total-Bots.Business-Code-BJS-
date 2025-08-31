@@ -30,6 +30,7 @@ let url = message;
 // Validate
 if (!url || !url.match(/^https?:\/\//i)) {
   Bot.sendMessage("⚠️ Please send a valid URL starting with http:// or https://");
+  Bot.runCommand("/results_url")
   return;
 }
 
@@ -64,4 +65,3 @@ HTTP.post({
 if (msg) {
   Bot.setProperty("waitingMsg:" + user.telegramid, msg.message_id);
 }
-
