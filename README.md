@@ -1,84 +1,172 @@
-# myTelegramProFRBot - chat bot
-It is repository for chat bot: [@myTelegramProFRBot](https://t.me/myTelegramProFRBot)
+# 🦠 VirusTotal File Scanner Bot (Bots.Business) — v1.1 Full Release
 
-## What it is?
-This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
+A **Telegram bot** built on the [Bots.Business](https://bots.business/) platform that lets users check **URLs, Domains, IPs, and File Hashes** using **VirusTotal** and receive clear, readable reports right in chat.
 
-[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
+This release upgrades the original URL-only beta to a **complete security scanner** with a **clean inline UI** (edits messages in place — no chat spam).
 
-A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
+---
 
-## Create your own bot for Telegram from this Git repo
+## 🚀 What’s New in v1.1
 
-How to create bot?
-1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
-2. Create bot in App and add Secret Token
-3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
-4. Do import for this git repo
+- 🌐 **URL** scan
+- 🏷 **Domain** scan
+- 🔢 **IP address** scan
+- 📄 **File hash** scan (MD5/SHA1/SHA256)
+- 🧭 **Inline menu that edits in place** (Back button, no message spam)
+- 🧱 Better validation & helpful status messages
+- ⚠️ Shared error handling & rate-limit guidance
 
-Now you can talk with yours new Telegram Bot
+---
 
-See [more](https://help.bots.business/getting-started)
+## ⚠️ Important Notes
 
-## Commands - in commands folder
-File name - it is command name (Bot it can be rewritten in command description)
+- Bots.Business **does not support raw file uploads**; use **direct file links** or **file hashes** instead.
+- VirusTotal **free API** has strict rate limits (e.g., ~4 req/min). Hitting the limit will delay results.
+- VirusTotal results are **indicative**, not guarantees. Always exercise caution.
 
-Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
+---
 
-### Command description
-It is file header:
+## 🛠 Getting a VirusTotal API Key
 
-    /*CMD
-      command: /test
-      help: this is help for ccommand
-      need_reply: [ true or false here ]
-      auto_retry_time: [ time in sec ]
-      answer: it is example answer for /test command
-      keyboard: button1, button2
-      aliases: /test2, /test3
-    CMD*/
+1. Go to 👉 **VirusTotal**: https://www.virustotal.com  
+2. Sign in (or create a free account).  
+3. Open your **API Key** page and copy your key.
 
-See [more](https://help.bots.business/commands)
+---
 
-### Command body
-It is command code in JavaScript.
-Use Bot Java Script for logic in command.
+## How to import GitHub repo Bots.Business bots to Bots.Business account
 
-For example:
-> Bot.sendMessage(2+2);
+Watch this step-by-step video guide on YouTube:  
+👉 [How to import GitHub repo to Bots.Business](https://www.youtube.com/watch?v=irYn0_UvAcY)
 
-See [more](https://help.bots.business/scenarios-and-bjs)
+---
 
+## 🔑 Setting Your API Key (Step-by-Step)
 
-## Libraries - in libs folder
-You can store common code in the libs folder. File name - it is library name.
+You can set using bots.business admin panel:
 
-For example code in myLib.js:
+### Set using Admin Panel Bots.Business
+1. Run /setpanel in your bot
+2.Then go to your bot in **Bots.Business** → **Your Bot** → **Admin Panel**.
+3. Paste your API key in the api key field.
+4. Set your admin panel id means your telegram id
+5. 
+> Using a property keeps your key in one place and avoids editing multiple commands later.
 
-    function hello(){ Bot.sendMessage("Hello from lib!") }
-    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
+---
 
-    publish({
-      sayHello: hello,
-      sayGoodbyeTo: goodbye
-    })
+## 🧭 How to Use
 
-then you can run in any bot's command:
+1. **Start the bot** with `/start`.  
+   You’ll see a single inline menu with:
+   - 🌐 **Scan URL**
+   - 🏷 **Scan Domain**
+   - 🔢 **Scan IP**
+   - 📄 **Scan Hash**
+   - ℹ️ **About**
 
-    Libs.myLib.hello()
-    Libs.myLib.sayGoodbyeTo("Alice")
+2. **Pick what to scan**  
+   The message updates in place (no spam) and prompts you to send the value.
 
-See [more](https://help.bots.business/git/library)
+3. **Submit & check**  
+   - For **URL**: the bot submits it to VirusTotal, then you tap **“Check URL Report”** to fetch the analysis when ready.  
+   - For **Domain / IP / Hash**: the bot fetches reputation/analysis data instantly if available.
 
-## Other bots example
-See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
+4. **Read the report**  
+   You’ll get a compact summary:
+✅ VirusTotal Report
 
+🟥 Malicious: 9 
+🟧 Suspicious: 1
+🟩 Harmless: 62
+⚪ Undetected: 25
 
-## Other help
-[Help.bots.business](https://help.bots.business)
+---
 
-## API
-See [API](https://api.bots.business/docs#/docs/summary)
+## 📦 Supported Scans & What They Mean
 
+### 🌐 URL Scan
+- Submits a URL (or direct file link like `.zip`, `.rar`, `.7z`, `.txt`) to VirusTotal for analysis.
+- If the scan is still **queued/in-progress**, try checking again shortly.
+- Report shows detection summary from multiple antivirus engines.
 
-![](https://bots.business/images/web-logo.png)
+### 🏷 Domain Scan
+- Checks a domain in VirusTotal.
+- Shows detection summary (malicious, suspicious, harmless, undetected).
+- *Note:* Extra info like registrar/WHOIS is not included in this bot’s version.
+
+### 🔢 IP Scan
+- Checks an IP address in VirusTotal.
+- Shows detection summary (malicious, suspicious, harmless, undetected).
+- *Note:* Network owner (ASN) or geolocation data is not included in this bot’s version.
+
+### 📄 File Hash Scan (MD5/SHA1/SHA256)
+- Looks up a file’s known status by its hash (without uploading).
+- Fastest way to check already-known samples in VirusTotal.
+- Report only includes detection summary stats.
+
+---
+
+## 📝 Example: URL Report (Explained)
+
+- **🟥 Malicious** — engines flagged it as dangerous (virus/trojan/ransomware).
+- **🟧 Suspicious** — looks risky but not confirmed.
+- **🟩 Harmless** — known good/clean.
+- **⚪ Undetected** — no flags; not necessarily safe, just unknown.
+
+---
+
+## ✨ Features
+
+- **All-in-one scanner**: URL, Domain, IP, File Hash
+- **Inline UI** (edits the same message, Back button)
+- **Real-time VirusTotal reports**
+- **Friendly error messages** (rate limits, missing key, etc.)
+- **Extensible**: add more URL extensions (e.g., `.pdf`, `.apk`, `.exe`) in the URL validation
+
+---
+
+## 🔧 Configuration Tips
+
+- **Add more URL extensions**: in the URL validation, append more checks like  
+`|| lower.endsWith(".pdf") || lower.endsWith(".apk") || lower.endsWith(".exe")`
+- **Respect rate limits**: avoid spamming requests; wait before re-checking analysis.
+
+---
+
+## 📄 Release Notes – v1.1
+
+- Added **Domain**, **IP**, and **File Hash** scanners
+- Upgraded **inline UI** to edit messages in place
+- Cleaner **report formatting** across all scan types
+- Improved **input validation** and **error handling**
+- Documentation revamped for quick setup
+
+---
+
+## 📚 License & Usage
+
+- You may **edit**, **publish**, or **modify** this code.
+- You must retain credits to **FlashCom** in forks, distributions, or publications.
+- Use responsibly. The authors are **not responsible** for misuse or damages.
+- This project is provided **as-is** (BETA → now Full Scan Release features).
+
+---
+
+## 🤝 Credits
+
+This project is a **human + AI collaboration**.  
+Vision, integration, and maintenance by **FlashCom**.  
+AI tools helped accelerate code assembly and documentation.
+
+**Powered by FlashCom.**  
+
+---
+
+## 🔗 Links
+
+- Bots.Business: https://bots.business  
+- VirusTotal: https://virustotal.com  
+- GetMart (more bots & codes including view and test apis ): https://getmart.iblogger.org
+- GetMart Official Channel : https://t.me/GetMartOfficialChannel
+- FlashCom BJS Codes : https://t.me/FlashComBjs ( Get updates regardiign this code or even get more codes and news )
