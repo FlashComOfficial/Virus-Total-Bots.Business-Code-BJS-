@@ -32,8 +32,13 @@ if (!domain) {
   return;
 }
 
-let apiKey = Bot.getProperty("vt_api_key");
-if (!apiKey) return Bot.sendMessage("⚠️ API key not set. Use /setapikey");
+var values = AdminPanel.getPanelValues("virustotal_settings");
+let apiKey = values.vt_api_key;
+
+if (!apiKey) {
+  Bot.sendMessage("⚠️ API key not set. Go to Admin Panel to configure it.");
+  return;
+}
 
 HTTP.get({
   url: "https://www.virustotal.com/api/v3/domains/" + encodeURIComponent(domain),
