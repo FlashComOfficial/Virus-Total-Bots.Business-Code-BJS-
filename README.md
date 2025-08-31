@@ -1,81 +1,84 @@
-# 🦠 VirusTotal File Scanner Bot (Bots.Business) - BETA VERSION
+# myTelegramProFRBot - chat bot
+It is repository for chat bot: [@myTelegramProFRBot](https://t.me/myTelegramProFRBot)
 
-A **Telegram bot** built for the [**Bots.Business**](https://bots.business/) platform that allows users to submit direct file links (`.zip`, `.rar`, `.7z`, `.txt`, etc.) for scanning with **VirusTotal**. The bot fetches results and provides a **clear antivirus report directly in chat**.
+## What it is?
+This repository can be imported to [Bots.Business](https://bots.business) as a worked chat bot.
 
----
+[Bots.Business](https://bots.business) - it is probably the first CBPaaS - Chat Bot Platform as a Service.
 
-## ⚠️ Important Notice
+A CBPaaS is a cloud-based platform that enables developers to create chatbots without needing to build backend infrastructure.
 
-- You can send **direct file links** (e.g., `.zip`, `.rar`, `.7z`, `.txt`) to check them on VirusTotal.
-- By default, only these extensions are supported, but you can easily **add more** in the code.
+## Create your own bot for Telegram from this Git repo
 
-🔔 **Disclaimers**
-- Results are powered by **VirusTotal’s scanning engines** — we do **not guarantee 100% accuracy**.
-- The developers are **not responsible** for how results are used.
-- This project is currently in **BETA version**. Use at your own risk.
+How to create bot?
+1. Create bot with [@BotFather](https://telegram.me/BotFather) and take Secret Token
+2. Create bot in App and add Secret Token
+3. Add Public Key from App as [Deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) with read access (and write access for bot exporting if you need it)
+4. Do import for this git repo
 
----
+Now you can talk with yours new Telegram Bot
 
-## 🛠 Getting Your VirusTotal API Key
+See [more](https://help.bots.business/getting-started)
 
-1. Go to 👉 [VirusTotal API Keys](https://www.virustotal.com/gui/user/flashcomteam/apikey)
-2. Login (or create a free VirusTotal account).
-3. Generate your **personal API key**.
+## Commands - in commands folder
+File name - it is command name (Bot it can be rewritten in command description)
 
----
+Command can have: `name`, `help`, `aliases` (second names), `answer`, `keyboard`, `scnarios` (for simple logic) and other options.
 
-## 🔑 Setting Your API Key
+### Command description
+It is file header:
 
-1. Open the commands **`/onUrl`** and **`/checkResult`** in your Bots.Business bot.
-2. Replace the `YOUR_API_KEY_HERE` with your API key.
+    /*CMD
+      command: /test
+      help: this is help for ccommand
+      need_reply: [ true or false here ]
+      auto_retry_time: [ time in sec ]
+      answer: it is example answer for /test command
+      keyboard: button1, button2
+      aliases: /test2, /test3
+    CMD*/
 
----
+See [more](https://help.bots.business/commands)
 
-## 📝 How to Use
+### Command body
+It is command code in JavaScript.
+Use Bot Java Script for logic in command.
 
-1.  **Send the File URL:** First, send the direct URL of the file you want to scan to the bot.
-2.  **Wait for the Scan:** VirusTotal will begin processing your file. This can take some time, depending on the file's size and how busy the scanning queue is. **You must wait for the scan to finish before proceeding.**
-3.  **Get the Report:** Once you've waited, simply use the command `/checkResult` to retrieve the report.
+For example:
+> Bot.sendMessage(2+2);
 
-**Important:** The bot will only show the results for the **last URL you submitted**. You must run `/checkResult` to get the report; you will not receive an automatic message. If the scan is still in progress, you will need to wait and try the command again later.
+See [more](https://help.bots.business/scenarios-and-bjs)
 
----
 
-## 🤝 Credits
+## Libraries - in libs folder
+You can store common code in the libs folder. File name - it is library name.
 
-This project is a human-AI collaboration. I, FlashCom, am the sole creator and maintainer, providing the vision, problem-solving, and final integration. AI tools were utilized to accelerate the code development process.
+For example code in myLib.js:
 
----
+    function hello(){ Bot.sendMessage("Hello from lib!") }
+    function goodbye(name){ Bot.sendMessage("Goodbye, " + name) }
 
-## 📌 Usage Rights & Responsibilities
+    publish({
+      sayHello: hello,
+      sayGoodbyeTo: goodbye
+    })
 
-- You are free to edit, publish, or modify this code.
-- Once obtained, it is your responsibility to manage, publish, or distribute.
-- Credits to FlashCom are required in all publications, forks, or modifications.
-- Contributions, improvements, and pull requests are always welcome!
+then you can run in any bot's command:
 
----
+    Libs.myLib.hello()
+    Libs.myLib.sayGoodbyeTo("Alice")
 
-## 📊 Example Report
+See [more](https://help.bots.business/git/library)
 
-When a file link is scanned, the bot replies with a VirusTotal report summary:
+## Other bots example
+See other bots examples in the [github](https://github.com/bots-business?utf8=✓&tab=repositories&q=&type=public&language=javascript) or in the [Bot Store](https://bots.business/)
 
-`✅ VirusTotal Report for last URL: 🟥 Malicious: 9  🟧 Suspicious: 1  🟩 Harmless: 62  ⚪ Undetected: 25`
 
----
+## Other help
+[Help.bots.business](https://help.bots.business)
 
-## Definition of above reports
-🟥 Malicious: 9 → 9 antivirus engines flagged the file as malicious (e.g., virus, trojan, ransomware).
+## API
+See [API](https://api.bots.business/docs#/docs/summary)
 
-🟧 Suspicious: 1 → 1 engine thought the file looks suspicious (but not confirmed as malware).
 
-🟩 Harmless: 62 → 62 engines scanned the file and found it completely safe.
-
-⚪ Undetected: 25 → 25 engines could not identify the file (they didn’t detect anything, but that doesn’t mean it’s safe).
-
-## 🚀 Features
-
-- **🔗 Supports scanning direct file URLs** (`.zip`, `.rar`, `.7z`, `.txt`, etc.).
-- **⚡ Fetches real-time VirusTotal reports.**
-- **📊 Provides a clean and clear report format.**
-- **🛠 Easy to customize and extend** (add more file extensions in /onUrl you can add "|| lower.endsWith(".7z")" aftr this add repalce .7z with your extension and you can add more likewhise )
+![](https://bots.business/images/web-logo.png)
